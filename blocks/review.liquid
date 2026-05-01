@@ -157,6 +157,56 @@
   .filled-star {
     fill: var(--star-fill-color);
   }
+
+  @media screen and (max-width: 749px) {
+    .rating-wrapper {
+      gap: 8px !important;
+      padding-bottom: 12px !important;
+    }
+
+    .rating-wrapper .rating {
+      gap: 0 !important;
+    }
+
+    .rating-wrapper .stars {
+      width: 13px !important;
+      height: 13px !important;
+      fill: #F48F01 !important;
+    }
+
+    .rating-wrapper .rating-count {
+      font-family: 'Open Sans', sans-serif !important;
+      font-size: 12px !important;
+      line-height: 16px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0 !important;
+    }
+
+    .rating-wrapper .rating-count span[aria-hidden="true"] {
+      font-weight: 600 !important;
+      color: #191B23 !important;
+      font-size: 12px !important;
+      line-height: 16px !important;
+    }
+
+    .rating-wrapper .rating-count-separator {
+      width: 0 !important;
+      height: 12px !important;
+      padding: 0 !important;
+      margin: 0 8px !important;
+      border-left: 1px solid #C3C6D7 !important;
+      color: transparent !important;
+      font-size: 0 !important;
+      opacity: 1 !important;
+      overflow: hidden !important;
+    }
+
+    .rating-wrapper .rating-count {
+      color: #424654 !important;
+      font-weight: 400 !important;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}

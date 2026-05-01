@@ -11,6 +11,17 @@
 {% capture children %}
   {% unless closest.product == blank %}
     {% render 'product-card-badges', product: closest.product, settings: settings %}
+    <button
+      class="psg-wishlist-btn"
+      type="button"
+      aria-label="Add to wishlist"
+      data-product-id="{{ closest.product.id }}"
+      data-product-handle="{{ closest.product.handle }}"
+    >
+      <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.33335 14.375L7.1771 13.3271C3.08335 9.63542 0.333351 7.15625 0.333351 4.14583C0.333351 1.66667 2.27293 0 4.79168 0C6.21252 0 7.57502 0.661458 8.33335 1.67708C9.09168 0.661458 10.4542 0 11.875 0C14.3938 0 16.3334 1.66667 16.3334 4.14583C16.3334 7.15625 13.5834 9.63542 9.4896 13.3271L8.33335 14.375Z" fill="#F48F01"/>
+      </svg>
+    </button>
     {%  if settings.quick_add or settings.mobile_quick_add %}
       {% unless disable_quick_add %}
         {% render 'quick-add', product: closest.product, section_id: section.id %}

@@ -26,7 +26,7 @@
           {% if heading_first != blank or heading_middle != blank or heading_last != blank %}
             <h2 class="testimonials-with-product__title">
               {% if heading_first != blank %}
-                {{ heading_first }}
+                {{ heading_first }}<br>
               {% endif %}
               {% if heading_middle != blank %}
                 <span class="testimonials-with-product__title-highlight">{{ heading_middle }}</span>
@@ -55,6 +55,7 @@
             <p class="testimonials-with-product__eyebrow">{{ section.settings.subheading }}</p>
           {% endif %}
         </div>
+        <div class="testimonials-with-product__decorative-circle"></div>
       </div>
     {% endif %}
 
@@ -74,6 +75,14 @@
         >
           &rsaquo;
         </button>
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="testimonials-with-product__cta-button">
+            {{ section.settings.button_text }}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
       </div>
     {% endif %}
 
@@ -84,7 +93,16 @@
           {% assign product = block.settings.product %}
           <article class="testimonial-card" {{ block.shopify_attributes }}>
             <div class="testimonial-card__media">
-              {% if product != blank and product.featured_image != blank %}
+              {% if block.settings.review_image != blank %}
+                {{
+                  block.settings.review_image
+                  | image_url: width: 700
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: block.settings.customer_name,
+                    class: 'testimonial-card__image'
+                }}
+              {% elsif product != blank and product.featured_image != blank %}
                 {% assign product_image_alt = product.featured_image.alt | default: product.title %}
                 {{
                   product.featured_image
@@ -97,6 +115,14 @@
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'testimonial-card__placeholder' }}
               {% endif %}
+
+              <div class="testimonial-card__verified-badge">
+                <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5 0L7.9625 1.1625L9.825 1.175L10.3875 2.9625L12.0125 3.8875L11.45 5.675L12.0125 7.4625L10.3875 8.3875L9.825 10.175L7.9625 10.1875L6.5 11.35L5.0375 10.1875L3.175 10.175L2.6125 8.3875L0.9875 7.4625L1.55 5.675L0.9875 3.8875L2.6125 2.9625L3.175 1.175L5.0375 1.1625L6.5 0Z" fill="#F49200"/>
+                  <path d="M4.25 5.675L5.75 7.175L8.75 4.175" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>VERIFIED PAWRENT</span>
+              </div>
 
               <!-- Desktop: Product pill -->
               {% if product != blank %}
@@ -134,9 +160,9 @@
                           <div class="testimonial-card__mobile-rating-stars">
                             {% for i in (1..5) %}
                               {% if i <= block.settings.rating %}
-                                <span class="testimonial-card__star testimonial-card__star--filled">★</span>
+                                <span class="testimonial-card__star testimonial-card__star--filled">&#9733;</span>
                               {% else %}
-                                <span class="testimonial-card__star">★</span>
+                                <span class="testimonial-card__star">&#9733;</span>
                               {% endif %}
                             {% endfor %}
                           </div>
@@ -183,9 +209,9 @@
                           <div class="testimonial-card__stars">
                             {% for i in (1..5) %}
                               {% if i <= block.settings.rating %}
-                                <span class="testimonial-card__star testimonial-card__star--filled">★</span>
+                                <span class="testimonial-card__star testimonial-card__star--filled">&#9733;</span>
                               {% else %}
-                                <span class="testimonial-card__star">★</span>
+                                <span class="testimonial-card__star">&#9733;</span>
                               {% endif %}
                             {% endfor %}
                           </div>
@@ -207,6 +233,39 @@
                   {{ block.settings.text }}
                 </div>
               {% endif %}
+
+              <div class="testimonial-card__mobile-footer">
+                <div class="testimonial-card__mobile-footer-left">
+                  {% if block.settings.customer_image != blank %}
+                    <div class="testimonial-card__mobile-footer-avatar-wrap">
+                      {{
+                        block.settings.customer_image
+                        | image_url: width: 80
+                        | image_tag:
+                          loading: 'lazy',
+                          alt: block.settings.customer_name,
+                          class: 'testimonial-card__mobile-footer-avatar'
+                      }}
+                    </div>
+                  {% endif %}
+                  <div class="testimonial-card__mobile-footer-info">
+                    {% if block.settings.customer_name != blank %}
+                      <span class="testimonial-card__mobile-footer-name">{{ block.settings.customer_name }}</span>
+                    {% endif %}
+                    {% if block.settings.customer_badge != blank %}
+                      <span class="testimonial-card__mobile-footer-role">{{ block.settings.customer_badge }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if block.settings.product_button_text != blank %}
+                  <a href="{{ product.url }}" class="testimonial-card__mobile-footer-product">
+                    <span>{{ block.settings.product_button_text }}</span>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 5H9M9 5L5 1M9 5L5 9" stroke="#8A5100" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
             </div>
           </article>
         {% endfor %}
@@ -295,17 +354,21 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    position: relative;
   }
 
   .testimonials-with-product__header-text {
     flex: 1 1 auto;
   }
 
+  .testimonials-with-product__decorative-circle {
+    display: none;
+  }
+
   .testimonials-with-product__eyebrow {
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.08em;
-    {% comment %} text-transform: uppercase; {% endcomment %}
     color: rgba(31, 41, 55, 0.7);
     margin: 12px 0 0;
   }
@@ -386,6 +449,10 @@
     scroll-snap-align: start;
   }
 
+  .testimonial-card__verified-badge {
+    display: none;
+  }
+
   .testimonial-card__media {
     position: relative;
     flex: 0 0 320px;
@@ -448,6 +515,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .testimonial-card__mobile-footer {
+    display: none;
   }
 
   .testimonial-card__header {
@@ -568,183 +639,284 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 769px) {
+    .testimonial-card__mobile-overlay {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .testimonials-with-product__header {
+      position: relative;
+      overflow: hidden;
+      padding: 12px 20px;
+      margin-bottom: 0;
+    }
+
+    .testimonials-with-product__decorative-circle {
+      display: block;
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 128px;
+      height: 128px;
+      border-radius: 9999px;
+      background: rgba(244, 146, 0, 0.06);
+      filter: blur(64px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .testimonials-with-product__header-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonials-with-product__title {
+      font-family: 'Gliker', sans-serif !important;
+      font-size: 36px !important;
+      font-weight: 600 !important;
+      line-height: 40px !important;
+      letter-spacing: -0.9px !important;
+      color: #1B1C1A !important;
+    }
+
+    .testimonials-with-product__title-highlight {
+      color: #8A5100 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .testimonials-with-product__eyebrow {
+      font-family: 'Open Sans', sans-serif !important;
+      font-size: 16px !important;
+      font-weight: 400 !important;
+      line-height: 26px !important;
+      letter-spacing: 0 !important;
+      color: #544434 !important;
+      opacity: 0.8;
+      margin-top: 6px;
+    }
+
+    .testimonials-with-product__carousel {
+      padding-top: 12px;
+    }
+
+    .testimonials-with-product__list {
+      gap: 10px;
+      padding: 12px 20px 12px;
+    }
+
     .testimonial-card {
       flex-direction: column;
-      flex: 0 0 100%;
-      max-width: none;
-      padding: 16px;
-      gap: 16px;
+      flex: 0 0 auto;
+      width: 290px;
+      max-width: 290px;
+      padding: 0;
+      gap: 0;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: none;
+      overflow: hidden;
     }
 
     .testimonial-card__media {
       max-width: none;
       width: 100%;
-      height: 260px;
+      height: 288px;
+      border-radius: 0;
+      flex: none;
     }
 
-    /* Hide desktop product pill on mobile */
+    .testimonial-card__verified-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 5;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(250, 249, 246, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .testimonial-card__verified-badge span {
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #1B1C1A;
+      line-height: 15px;
+    }
+
     .testimonial-card__product-pill {
       display: none;
     }
 
-    /* Hide testimonial text content on mobile */
-    .testimonial-card__headline,
-    .testimonial-card__text {
-      display: none;
+    .testimonial-card__mobile-overlay {
+      display: none !important;
+    }
+
+    .testimonial-card__content {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .testimonial-card__header {
-      display: block;
+      margin-bottom: 0;
+      order: -1;
     }
 
     .testimonial-card__customer-info {
-      flex-direction: row;
-      gap: 10px;
+      display: flex;
       align-items: center;
+      gap: 0;
     }
 
-    .testimonial-card__customer-avatar {
-      width: 40px;
-      height: 40px;
+    .testimonial-card__customer-image {
+      display: none;
     }
 
     .testimonial-card__customer-details {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
       padding-top: 0;
-      gap: 2px;
     }
 
-    .testimonial-card__customer-name {
-      font-size: 14px;
-    }
-
+    .testimonial-card__customer-name,
     .testimonial-card__customer-badge {
-      font-size: 11px;
+      display: none;
     }
 
     .testimonial-card__rating {
       display: flex;
-      font-size: 13px;
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     .testimonial-card__stars {
-      font-size: 13px;
-      gap: 2px;
+      gap: 4px;
+      font-size: 16px;
     }
 
-    .testimonial-card__rating-divider {
-      font-size: 12px;
+    .testimonial-card__star {
+      color: rgba(244, 146, 0, 0.25);
+      font-size: 16px;
     }
 
+    .testimonial-card__star--filled {
+      color: #F49200;
+    }
+
+    .testimonial-card__rating-divider,
     .testimonial-card__rating-text {
-      font-size: 12px;
+      display: none;
     }
 
-    /* Mobile overlay on product image */
-    .testimonial-card__mobile-overlay {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 14px;
-      padding: 8px 12px;
+    .testimonial-card__headline {
+      font-family: 'Open Sans', sans-serif !important;
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      line-height: 25px !important;
+      color: #1B1C1A !important;
+      margin: 0;
     }
 
-    .testimonial-card__mobile-overlay-content {
+    .testimonial-card__text {
+      font-family: 'Open Sans', sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      line-height: 22.75px !important;
+      color: #544434 !important;
+    }
+
+    .testimonial-card__mobile-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      margin-top: 4px;
+      padding-top: 12px;
     }
 
-    .testimonial-card__mobile-left {
+    .testimonial-card__mobile-footer-left {
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
+      gap: 10px;
     }
 
-    .testimonial-card__mobile-customer-image {
+    .testimonial-card__mobile-footer-avatar-wrap {
       flex-shrink: 0;
     }
 
-    .testimonial-card__mobile-customer-avatar {
-      width: 40px;
-      height: 40px;
+    .testimonial-card__mobile-footer-avatar {
+      width: 32px;
+      height: 32px;
       border-radius: 9999px;
       object-fit: cover;
       display: block;
-      border: 2px solid #fff;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.15);
     }
 
-    .testimonial-card__mobile-info {
+    .testimonial-card__mobile-footer-info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      min-width: 0;
+      gap: 1px;
     }
 
-    .testimonial-card__mobile-customer-name {
-      font-weight: 600;
+    .testimonial-card__mobile-footer-name {
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
       font-size: 14px;
-      color: #111827;
-      line-height: 1.3;
+      font-weight: 700;
+      color: #1B1C1A;
+      line-height: 20px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: block;
     }
 
-    .testimonial-card__mobile-rating {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .testimonial-card__mobile-rating-stars {
-      display: flex;
-      gap: 1px;
-      font-size: 14px;
-    }
-
-    .testimonial-card__mobile-rating-text {
-      font-size: 12px;
-      color: #6b7280;
+    .testimonial-card__mobile-footer-role {
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: #544434;
+      line-height: 16.5px;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
     }
 
-    .testimonial-card__mobile-view-product {
+    .testimonial-card__mobile-footer-product {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      color: #F48F01;
-      font-weight: 600;
-      font-size: 13px;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background: #f5f3f0;
       text-decoration: none;
       white-space: nowrap;
+    }
+
+    .testimonial-card__mobile-footer-product span {
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #8A5100;
+      letter-spacing: 1px;
+      line-height: 15px;
+    }
+
+    .testimonial-card__mobile-footer-product svg {
       flex-shrink: 0;
     }
 
-    .testimonial-card__mobile-view-product:hover {
-      color: #b51f17;
-      text-decoration: underline;
-    }
-
-    .testimonial-card__mobile-view-product svg {
-      flex-shrink: 0;
-    }
-
-    .testimonial-card__content {
-      display: none;
-    }
-
-    /* Move navigation to bottom on mobile (below carousel) */
     .testimonials-with-product__inner {
       display: flex;
       flex-direction: column;
@@ -770,62 +942,16 @@
       width: 40px;
       height: 40px;
       font-size: 20px;
-    }
-  }
-
-  /* Hide mobile overlay on desktop */
-  @media screen and (min-width: 769px) {
-    .testimonial-card__mobile-overlay {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 749px) {
-    .testimonials-with-product__title {
-      font-size: 30px;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .testimonial-card {
-      padding: 18px;
-      border-radius: 20px;
+      border: 1px solid rgba(156, 163, 175, 0.3);
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
     }
 
-    .testimonial-card__mobile-overlay {
-      left: 8px;
-      right: 8px;
-      bottom: 8px;
-      padding: 8px 10px;
-    }
-
-    .testimonial-card__mobile-overlay-content {
-      gap: 6px;
-    }
-
-    .testimonial-card__mobile-left {
-      gap: 6px;
-    }
-
-    .testimonial-card__mobile-customer-avatar {
-      width: 28px;
-      height: 28px;
-    }
-
-    .testimonial-card__mobile-customer-name {
-      font-size: 12px;
-    }
-
-    .testimonial-card__mobile-rating-stars {
-      font-size: 11px;
-    }
-
-    .testimonial-card__mobile-view-product {
-      font-size: 11px;
-    }
-
-    .testimonial-card__mobile-rating-number {
-      font-size: 11px;
+    .testimonials-with-product__nav--active {
+      background: #F49200;
+      border-color: #F49200;
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(244, 146, 0, 0.3);
     }
   }
 </style>
@@ -853,7 +979,7 @@
           "label": "Full width"
         }
       ],
-      "default": "page-width"
+      "default": "full-width"
     },
     {
       "type": "color_scheme",
@@ -869,13 +995,13 @@
       "type": "text",
       "id": "heading_prefix",
       "label": "Heading (first part)",
-      "default": "What Our"
+      "default": "Voices from our"
     },
     {
       "type": "text",
       "id": "heading_highlight",
       "label": "Heading highlight",
-      "default": "Customers"
+      "default": "Furry Family"
     },
     {
       "type": "text",
@@ -887,7 +1013,7 @@
       "type": "text",
       "id": "heading",
       "label": "Full heading (fallback)",
-      "default": "What Our Customers Say"
+      "default": "Voices from our Furry Family"
     },
     {
       "type": "checkbox",
@@ -899,7 +1025,7 @@
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Real reviews from real pet parents"
+      "default": "Real stories from tails that can't stop wagging and paws that found their perfect match."
     },
     {
       "type": "text",
@@ -965,37 +1091,43 @@
       "settings": [
         {
           "type": "image_picker",
-          "id": "customer_image",
-          "label": "Customer image"
+          "id": "review_image",
+          "label": "Review image (product/product photo)"
         },
         {
           "type": "text",
           "id": "customer_name",
           "label": "Customer name",
-          "default": "Tom Walker"
+          "default": "Sarah Jenkins"
         },
         {
           "type": "text",
           "id": "customer_badge",
-          "label": "Customer badge",
-          "default": "Verified buyer"
+          "label": "Customer role",
+          "default": "Mom to Cooper"
         },
         {
           "type": "text",
           "id": "headline",
           "label": "Headline",
-          "default": "Amazing bed our pets are obsessed!"
+          "default": "Cooper hasn't stopped wagging his tail since the package arrived!"
         },
         {
           "type": "richtext",
           "id": "text",
           "label": "Testimonial text",
-          "default": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>"
+          "default": "<p>The premium leash quality is beyond anything we've used before. It feels so soft in my hand but incredibly sturdy.</p>"
         },
         {
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "product_button_text",
+          "label": "Product button text",
+          "default": "PRO LEASH"
         },
         {
           "type": "checkbox",
@@ -1011,6 +1143,15 @@
           "max": 5,
           "step": 1,
           "default": 5
+        },
+        {
+          "type": "header",
+          "content": "Customer info"
+        },
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Customer avatar image"
         }
       ]
     }

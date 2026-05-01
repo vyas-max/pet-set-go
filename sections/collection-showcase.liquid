@@ -155,32 +155,95 @@
   }
 
   @media screen and (max-width: 749px) {
+    .collection-showcase {
+      --gap: 12px;
+    }
+
+    .collection-showcase__header {
+      text-align: left;
+      margin-bottom: 0;
+      padding: 0 20px;
+    }
+
     .collection-showcase__grid {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: var(--gap);
+      padding: 0 20px;
+    }
+
+    .collection-showcase__card {
+      border-radius: 20px;
+      box-shadow: none;
+      overflow: hidden;
+    }
+
+    .collection-showcase__card:hover {
+      transform: none;
+      box-shadow: none;
     }
 
     .collection-showcase__image-wrapper {
       padding-top: 0;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 388 / 358;
+      position: relative;
     }
 
-    @supports not (aspect-ratio: 1 / 1) {
+    @supports not (aspect-ratio: 388 / 358) {
       .collection-showcase__image-wrapper {
-        padding-top: 100%; /* Fallback to padding technique on older browsers */
+        padding-top: 92.3%;
       }
     }
 
+    .collection-showcase__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .collection-showcase__card:hover .collection-showcase__image {
+      transform: none;
+    }
+
+    .collection-showcase__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-top: 0;
+      padding: 12px 12px 20px 12px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+      color: #ffffff;
+    }
+
     .collection-showcase__heading {
-      font-size: 1.5rem;
+      font-family: 'Gliker', sans-serif;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 37.87px;
+      letter-spacing: 0;
+      color: #121212;
     }
 
     .collection-showcase__title {
+      font-family: 'Gliker', sans-serif;
       font-size: 30px;
+      font-weight: 600;
+      line-height: 37.87px;
+      margin: 0 0 4px 0;
+      color: #ffffff;
     }
 
     .collection-showcase__description {
-      font-size: 1rem;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21.79px;
+      margin: 0;
+      color: #ffffff;
+      opacity: 1;
     }
   }
 </style>

@@ -357,16 +357,227 @@
 /* Mobile adjustments */
 @media screen and (max-width: 749px) {
   .custom-footer {
-    padding: 48px 0 28px;
+    padding: 20px 0 0;
+    background: #101827 !important;
+    color: #ffffff;
+  }
+
+  .custom-footer__container {
+    padding: 0 20px;
+  }
+
+  .custom-footer__top {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 0;
+  }
+
+  .custom-footer__brand {
+    gap: 20px;
+  }
+
+  .custom-footer__brand-mark {
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-footer__brand-logo {
+    width: 160px;
+  }
+
+  .custom-footer__brand-title {
+    color: #ffffff;
+  }
+
+  .custom-footer__brand-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    color: #ffffff;
+    letter-spacing: 0;
+  }
+
+  .custom-footer__support {
+    display: none;
+  }
+
+  .custom-footer__social {
+    display: flex;
+  }
+
+  .custom-footer__social-icons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .custom-footer__social-icons .social-icon__link {
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
   }
 
   .custom-footer__menus {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 32px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+
+  .custom-footer__menu-column {
+    min-width: 0;
+  }
+
+  .custom-footer__menu-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.2px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 0 0 16px;
+    text-transform: none;
+  }
+
+  .custom-footer__menu-list {
+    gap: 16px;
+  }
+
+  .custom-footer__menu-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #ffffff;
+    letter-spacing: 0;
   }
 
   .custom-footer__newsletter {
     margin-left: 0;
+    max-width: 100%;
+  }
+
+  .custom-footer__newsletter-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.2px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+
+  .custom-footer__newsletter-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    color: #ffffff;
+    margin: 0 0 20px;
+  }
+
+  .custom-footer__newsletter-controls {
+    gap: 12px;
+  }
+
+  .custom-footer__input-wrapper {
+    padding: 12px 20px;
+    border-radius: 200px;
+    border: none;
+    background: #121212;
+  }
+
+  .custom-footer__input-icon {
+    position: relative;
+    left: auto;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .custom-footer__newsletter-input {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #ffffff;
+    padding-left: 10px;
+  }
+
+  .custom-footer__newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.12);
+  }
+
+  .custom-footer__newsletter-button {
+    padding: 12px 20px;
+    border-radius: 200px;
+    background: #f49e0b;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0;
+    box-shadow: none;
+  }
+
+  .custom-footer__newsletter-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .custom-footer__bottom {
+    padding-top: 0;
+    border-top: none;
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+
+  .custom-footer__newsletter {
+    padding-bottom: 30px;
+  }
+
+  .custom-footer__payment {
+    display: none;
+  }
+
+  .custom-footer__copyright {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .custom-footer__copyright p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    color: #8e8e8e;
+    order: 1;
+  }
+
+  .custom-footer__policies {
+    order: 2;
+    justify-content: flex-start;
+  }
+
+  .custom-footer__policy-list {
+    gap: 20px;
+  }
+
+  .custom-footer__policy-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+  }
+
+  .custom-footer__policy-link {
+    color: #8e8e8e;
+  }
+
+  .section-background {
+    display: none;
   }
 }
