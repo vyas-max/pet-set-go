@@ -1,0 +1,175 @@
+{%- comment -%}
+  Mobile sticky footer replicating header actions for handheld devices.
+  Shows menu toggle, search modal trigger, cart icon, and optional account icon.
+{%- endcomment -%}
+
+<div
+  class="mobile-sticky-footer desktop:hidden"
+  data-mobile-sticky-footer
+>
+  <button
+    type="button"
+    class="mobile-sticky-footer__action"
+    aria-label="{{ 'accessibility.menu' | t }}"
+    data-mobile-footer-menu
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-menu.svg' | inline_asset_content -}}
+    </span>
+  </button>
+
+  <button
+    type="button"
+    class="mobile-sticky-footer__action"
+    aria-label="{{ 'content.search_input_label' | t }}"
+    data-mobile-footer-search
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-search.svg' | inline_asset_content -}}
+    </span>
+  </button>
+
+  <button
+    type="button"
+    class="mobile-sticky-footer__action"
+    aria-label="{{ 'accessibility.cart' | t }}"
+    aria-describedby="cart-bubble-text"
+    data-mobile-footer-cart
+  >
+    {% render 'cart-icon-component', test_id: 'mobile-sticky-cart-icon' %}
+  </button>
+
+  {% if shop.customer_accounts_enabled %}
+    <button
+      type="button"
+      class="mobile-sticky-footer__action"
+      aria-label="{{ 'accessibility.account' | t }}"
+      data-mobile-footer-account
+    >
+      <span class="svg-wrapper">
+        {{- 'icon-account.svg' | inline_asset_content -}}
+      </span>
+    </button>
+  {% endif %}
+</div>
+
+<script>
+  (() => {
+    const footer = document.querySelector('[data-mobile-sticky-footer]');
+    if (!footer || footer.dataset.initialized === 'true') return;
+    footer.dataset.initialized = 'true';
+    document.body.classList.add('has-mobile-sticky-footer');
+
+    const getHeaderDrawer = () => document.querySelector('header-drawer');
+    const getHeaderDrawerSummary = () => document.querySelector('header-drawer summary');
+    const getSearchModal = () => document.getElementById('search-modal');
+    const getSearchTrigger = () => document.querySelector('.search-modal__button');
+    const getCartDrawerTrigger = () => document.querySelector('[data-testid="cart-drawer-trigger"]');
+    const getAccountTrigger = () =>
+      document.querySelector('.account-drawer .account-button') ||
+      document.querySelector('.account-popover .account-button');
+
+    footer.querySelector('[data-mobile-footer-menu]')?.addEventListener('click', () => {
+      const summary = getHeaderDrawerSummary();
+      if (summary) {
+        summary.click();
+        return;
+      }
+
+      const drawer = getHeaderDrawer();
+      drawer?.toggle?.();
+    });
+
+    footer.querySelector('[data-mobile-footer-search]')?.addEventListener('click', () => {
+      const modal = getSearchModal();
+      if (modal?.showDialog) {
+        modal.showDialog();
+      } else {
+        getSearchTrigger()?.click();
+      }
+    });
+
+    footer.querySelector('[data-mobile-footer-cart]')?.addEventListener('click', () => {
+      const trigger = getCartDrawerTrigger();
+      if (trigger) {
+        trigger.click();
+        return;
+      }
+      window.location.href = '{{ routes.cart_url }}';
+    });
+
+    footer.querySelector('[data-mobile-footer-account]')?.addEventListener('click', () => {
+      const trigger = getAccountTrigger();
+      if (trigger) {
+        trigger.click();
+        return;
+      }
+      window.location.href = '{{ routes.account_login_url }}';
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  @media screen and (max-width: 749px) {
+    body.has-mobile-sticky-footer {
+      --mobile-sticky-footer-height: 52px;
+      padding-bottom: calc(var(--mobile-sticky-footer-height) + var(--padding-sm));
+    }
+
+    .mobile-sticky-footer {
+      position: fixed;
+      inset-inline: 0;
+      inset-block-end: 0;
+      height: var(--mobile-sticky-footer-height);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background-color: #f58d02;
+      color: #fff;
+      border-top: var(--style-border-width) solid var(--color-border, rgba(0, 0, 0, 0.08));
+      z-index: calc(var(--layer-sticky, 8) + 2);
+    }
+
+    .mobile-sticky-footer__action {
+      --button-color: var(--color-foreground);
+      appearance: none;
+      border: none;
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .mobile-sticky-footer__action .svg-wrapper {
+      width: var(--button-size, 40px);
+      height: var(--button-size, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-sticky-footer__action svg {
+      width: var(--icon-size-md, 18px);
+      height: var(--icon-size-md, 18px);
+      color: inherit;
+      fill: currentColor;
+      stroke: currentColor;
+    }
+
+    .mobile-sticky-footer cart-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+
+      svg {
+        color: inherit;
+      }
+    }
+  }
+{% endstylesheet %}

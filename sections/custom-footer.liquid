@@ -1,0 +1,364 @@
+{{ 'custom-footer.css' | asset_url | stylesheet_tag }}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<footer class="custom-footer section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} spacing-style"
+  role="contentinfo"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="custom-footer__container page-width-content">
+    <!-- Top section -->
+    <div class="custom-footer__top">
+      <!-- Brand column -->
+      <div class="custom-footer__brand">
+        <div class="custom-footer__brand-mark">
+            {% if section.settings.brand_logo != blank %}
+              {{
+                section.settings.brand_logo
+                | image_url: width: 360
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'custom-footer__brand-logo',
+                  alt: section.settings.brand_title | default: shop.name
+              }}
+            {% endif %}
+            {% if section.settings.brand_title != blank %}
+              <p class="custom-footer__brand-title">
+                {{ section.settings.brand_title }}
+              </p>
+            {% endif %}
+          </div>
+
+
+        {% if section.settings.brand_description != blank %}
+          <p class="custom-footer__brand-description">{{ section.settings.brand_description }}</p>
+        {% endif %}
+
+        {% if section.settings.contact_text != blank or section.settings.phone != blank or section.settings.email != blank %}
+          <div class="custom-footer__support">
+            {% if section.settings.contact_text != blank %}
+              <p class="custom-footer__support-text">{{ section.settings.contact_text }}</p>
+            {% endif %}
+            <div class="custom-footer__support-links">
+              {% if section.settings.phone != blank %}
+                <a
+                  href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '-', '' }}"
+                  class="custom-footer__support-link"
+                >
+                  {{ section.settings.phone }}
+                </a>
+              {% endif %}
+              {% if section.settings.email != blank %}
+                <a href="mailto:{{ section.settings.email }}" class="custom-footer__support-link">
+                  {{ section.settings.email }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_social %}
+          <div class="custom-footer__social">
+            {% render 'social-icons', additional_classes: 'custom-footer__social-icons' %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Menu Links -->
+      <div class="custom-footer__menus">
+        {% for block in section.blocks %}
+          {% if block.type == 'menu' %}
+            <div class="custom-footer__menu-column">
+              {% if block.settings.heading != blank %}
+                <h4 class="custom-footer__menu-heading">{{ block.settings.heading }}</h4>
+              {% endif %}
+              {% if block.settings.menu != blank %}
+                <ul class="custom-footer__menu-list list-unstyled">
+                  {% for link in linklists[block.settings.menu].links %}
+                    <li>
+                      <a href="{{ link.url }}" class="custom-footer__menu-link">
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="custom-footer__newsletter">
+        {% if section.settings.newsletter_title != blank %}
+          <h3 class="custom-footer__newsletter-title">{{ section.settings.newsletter_title }}</h3>
+        {% endif %}
+        {% if section.settings.newsletter_description != blank %}
+          <p class="custom-footer__newsletter-description">{{ section.settings.newsletter_description }}</p>
+        {% endif %}
+        {% form 'customer', class: 'custom-footer__newsletter-form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="custom-footer__newsletter-controls">
+            <label class="visually-hidden" for="NewsletterForm--{{ section.id }}">{{ section.settings.email_placeholder }}</label>
+            <div class="custom-footer__input-wrapper">
+              <span class="custom-footer__input-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </span>
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="custom-footer__newsletter-input"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="Newsletter-error--{{ section.id }}"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="Newsletter-success--{{ section.id }}"
+                {% endif %}
+                placeholder="{{ section.settings.email_placeholder }}"
+              >
+            </div>
+            <button type="submit" class="custom-footer__newsletter-button" name="commit">
+              {{ section.settings.button_text }}
+            </button>
+          </div>
+          {%- if form.errors -%}
+            <small class="custom-footer__newsletter-error" id="Newsletter-error--{{ section.id }}">
+              {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+            </small>
+          {%- endif -%}
+          {%- if form.posted_successfully? -%}
+            <small class="custom-footer__newsletter-success" id="Newsletter-success--{{ section.id }}">
+              {{ 'newsletter.success' | t }}
+            </small>
+          {%- endif -%}
+        {% endform %}
+      </div>
+    </div>
+
+    <!-- Bottom section with payment and copyright -->
+    <div class="custom-footer__bottom">
+
+
+      <div class="custom-footer__copyright">
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_text }}</p>
+        {% if section.settings.show_policy_links and shop.policies.size > 0 %}
+          <div class="custom-footer__policies">
+            <ul class="custom-footer__policy-list">
+              {% for policy in shop.policies %}
+                {% if policy != blank %}
+                  <li>
+                    <a href="{{ policy.url }}" class="custom-footer__policy-link">{{ policy.title }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Custom Footer",
+  "class": "custom-footer-section",
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "Select a menu to display"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Information"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_title",
+      "label": "Brand Title",
+      "info": "Leave blank to use shop name."
+    },
+    {
+      "type": "richtext",
+      "id": "brand_description",
+      "label": "Brand Description"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Title",
+      "default": "Sign up for our newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_description",
+      "label": "Description",
+      "default": "Be the first to know about our new collections, exclusive offers and promotions."
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_text",
+      "label": "Contact text",
+      "default": "Our customer service team is here to help"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "+1 (555) 123-4567"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address",
+      "default": "support@petsetgo.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social media icons",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Color Scheme"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "custom_link_color",
+      "label": "Link color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "custom_heading_color",
+      "label": "Heading color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "custom_border_color",
+      "label": "Border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "header",
+      "content": "Payment & Copyright"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "payment_text",
+      "label": "Payment text",
+      "default": "We accept:"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy_links",
+      "label": "Show policy links",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "blocks": [
+        {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

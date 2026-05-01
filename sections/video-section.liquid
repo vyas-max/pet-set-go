@@ -1,0 +1,805 @@
+{% comment %}
+  Reels Video Section with Product Tagging
+  Allows displaying multiple Reels-style videos with associated products
+{% endcomment %}
+
+{% liquid
+  assign section_title = section.settings.title
+  assign section_title_prefix = section.settings.title_prefix
+  assign section_title_highlight = section.settings.title_highlight
+  assign section_description = section.settings.description
+  assign video_aspect_ratio = section.settings.video_aspect_ratio
+  assign video_max_width = section.settings.video_max_width | default: 600
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section 
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} spacing-style" 
+  style="{% render 'spacing-style', settings: section.settings %}"
+  data-reels-section-id="{{ section.id }}"
+  {{ section.shopify_attributes }}
+>
+  {% liquid
+    assign show_header_text = false
+    if section_title != blank or section_description != blank or section_title_prefix != blank or section_title_highlight != blank
+      assign show_header_text = true
+    endif
+    assign show_reel_nav = false
+    if section.blocks.size > 1
+      assign show_reel_nav = true
+    endif
+    assign header_prefix = section_title_prefix | strip
+    assign header_highlight = section_title_highlight | strip
+  %}
+  <div class="page-width-content">
+
+    {% if show_header_text or show_reel_nav %}
+      <div class="reels-header">
+        {% if show_header_text %}
+          <div class="reels-header-text">
+            {% if header_prefix != blank or header_highlight != blank %}
+              <h2 class="reels-title">
+                {% if header_prefix != blank %}
+                  {{ header_prefix }}
+                {% endif %}
+                {% if header_highlight != blank %}
+                  {% if header_prefix != blank %} {% endif %}
+                  <span class="reels-title-highlight">{{ header_highlight }}</span>
+                {% endif %}
+              </h2>
+            {% elsif section_title != blank %}
+              {% assign title_words = section_title | strip | split: ' ' %}
+              {% assign title_word_count = title_words | size %}
+              {% if title_word_count > 1 %}
+                {% assign non_highlight_count = title_word_count | minus: 1 %}
+                {% assign non_highlight_words = title_words | slice: 0, non_highlight_count %}
+                {% assign highlight_word = title_words | last %}
+                <h2 class="reels-title">
+                  {{ non_highlight_words | join: ' ' }}
+                  <span class="reels-title-highlight">{{ highlight_word }}</span>
+                </h2>
+              {% else %}
+                <h2 class="reels-title">
+                  <span class="reels-title-highlight">{{ section_title }}</span>
+                </h2>
+              {% endif %}
+            {% endif %}
+
+            {% if section_description != blank %}
+              <p class="reels-subtitle">
+                {{ section_description }}
+              </p>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if show_reel_nav %}
+          <div class="reels-nav-wrapper">
+            <button class="reels-nav reels-nav--prev reel-nav--prev" type="button" aria-label="Previous reels">
+              &lsaquo;
+            </button>
+            <button class="reels-nav reels-nav--next reel-nav--next reels-nav--active" type="button" aria-label="Next reels">
+              &rsaquo;
+            </button>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="reel-video-wrapper">
+        <div class="reel-video-list">
+        {% for block in section.blocks %}
+          {% if block.type == 'video_reel' %}
+            {% assign product = block.settings.product %}
+            <div class="reel-video-card" style="max-width: {{ video_max_width }}px;" {{ block.shopify_attributes }}>
+              <div class="reel-video-media" style="aspect-ratio: {{ video_aspect_ratio }};">
+                {% if block.settings.video_source == 'uploaded' and block.settings.video != blank %}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      image_size: '2500x',
+                      autoplay: block.settings.video_autoplay,
+                      loop: block.settings.video_loop,
+                      muted: block.settings.video_autoplay,
+                      controls: true,
+                      class: 'w-full h-full object-cover'
+                  }}
+                {% elsif block.settings.video_source == 'url' and block.settings.video_url != blank %}
+                  {% liquid
+                    assign video_id = block.settings.video_url.id
+                    assign video_type = block.settings.video_url.type
+                    if video_type == 'youtube'
+                      assign video_src = 'https://www.youtube.com/embed/' | append: video_id
+                      if block.settings.video_autoplay
+                        assign video_src = video_src | append: '?autoplay=1&mute=1'
+                      endif
+                      if block.settings.video_loop
+                        assign video_src = video_src | append: '&loop=1&playlist=' | append: video_id
+                      endif
+                    elsif video_type == 'vimeo'
+                      assign video_src = 'https://player.vimeo.com/video/' | append: video_id
+                      if block.settings.video_autoplay
+                        assign video_src = video_src | append: '?autoplay=1&muted=1'
+                      endif
+                      if block.settings.video_loop
+                        assign video_src = video_src | append: '&loop=1'
+                      endif
+                    endif
+                  %}
+                  <iframe
+                    src="{{ video_src }}"
+                    class="w-full h-full"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    title="{{ block.settings.video_alt | default: 'Reel Video' | escape }}"
+                  ></iframe>
+                {% else %}
+                  <div class="w-full h-full flex items-center justify-center">
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Add a video</p>
+                  </div>
+                {% endif %}
+
+                {% if product != blank %}
+                  <div class="reel-product-overlay">
+                    <a href="{{ product.url }}" class="reel-product-tag">
+                      <div class="reel-product-image">
+                        {% if product.featured_image %}
+                          {{
+                            product.featured_image
+                            | image_url: width: 160
+                            | image_tag:
+                              loading: 'lazy',
+                              alt: product.featured_image.alt,
+                              class: 'reel-product-img'
+                          }}
+                        {% endif %}
+                      </div>
+                      <div class="reel-product-info">
+                        <p class="reel-product-title">{{ product.title }}</p>
+                        <div class="reel-product-pricing">
+                          {% if product.compare_at_price > product.price %}
+                            <span class="reel-product-compare">{{ product.compare_at_price | money }}</span>
+                          {% endif %}
+                          <span class="reel-product-price">{{ product.price | money }}</span>
+                        </div>
+                      </div>
+                      <span aria-hidden="true" class="reel-product-arrow">&rsaquo;</span>
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+      {% if show_reel_nav %}
+        <div class="reels-nav-wrapper reels-nav-wrapper--mobile">
+          <button class="reels-nav reels-nav--prev reel-nav--prev" type="button" aria-label="Previous reels">
+            &lsaquo;
+          </button>
+          <button class="reels-nav reels-nav--next reel-nav--next reels-nav--active" type="button" aria-label="Next reels">
+            &rsaquo;
+          </button>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="text-center py-12">
+        <p class="text-gray-500 dark:text-gray-400">Add video reels to get started</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% javascript %}
+  function initAllReelsSections() {
+    var sections = document.querySelectorAll('[data-reels-section-id]');
+
+    sections.forEach(function (section) {
+      if (section.dataset.reelsInit === 'true') return;
+
+      var scroller = section.querySelector('.reel-video-list');
+      var prevButtons = section.querySelectorAll('.reel-nav--prev');
+      var nextButtons = section.querySelectorAll('.reel-nav--next');
+
+      if (!scroller || !prevButtons.length || !nextButtons.length) return;
+
+      var firstCard = scroller.querySelector('.reel-video-card');
+
+      function getScrollAmount() {
+        if (firstCard) {
+          var rect = firstCard.getBoundingClientRect();
+          var cardWidth = rect.width;
+          var gap = 24; // matches CSS gap on desktop
+          return cardWidth + gap;
+        }
+        return scroller.clientWidth || 0;
+      }
+
+      function scrollByAmount(direction) {
+        var amount = getScrollAmount() * direction;
+        var newLeft = scroller.scrollLeft + amount;
+        if (typeof scroller.scrollTo === 'function') {
+          scroller.scrollTo({ left: newLeft, behavior: 'smooth' });
+        } else {
+          scroller.scrollLeft = newLeft;
+        }
+      }
+
+      function setActiveNav(direction) {
+        prevButtons.forEach(function (btn) {
+          btn.classList.toggle('reels-nav--active', direction === 'prev');
+        });
+        nextButtons.forEach(function (btn) {
+          btn.classList.toggle('reels-nav--active', direction === 'next');
+        });
+      }
+
+      prevButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          scrollByAmount(-1);
+          setActiveNav('prev');
+        });
+      });
+
+      nextButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          scrollByAmount(1);
+          setActiveNav('next');
+        });
+      });
+
+      setActiveNav('next');
+
+      section.dataset.reelsInit = 'true';
+    });
+  }
+
+  // Initialize immediately in case DOMContentLoaded has already fired
+  initAllReelsSections();
+
+  document.addEventListener('DOMContentLoaded', initAllReelsSections);
+  document.addEventListener('shopify:section:load', initAllReelsSections);
+{% endjavascript %}
+
+{% stylesheet %}
+  .reels-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .reels-header-text {
+    max-width: 640px;
+  }
+
+  .reels-title {
+    font-family: var(--font-heading--family);
+    font-size: 60px;
+    line-height: 1.1;
+    color: #2A1E5C;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .reels-title-highlight {
+    color: #F48F01;
+    display: inline-block;
+  }
+
+  .reels-subtitle {
+    margin: 12px 0 0;
+    color: rgba(17, 24, 39, 0.7);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .reels-nav-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .reels-nav-wrapper--mobile {
+    display: none;
+    width: 100%;
+  }
+
+  .reels-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    border: 1px solid rgba(156, 163, 175, 0.4);
+    background: #FFF5D9;
+    color: #2A1E5C;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.2s ease;
+  }
+
+  .reels-nav--active {
+    background: #F48F01;
+    border-color: #F48F01;
+    color: #FFF5D9;
+    box-shadow: 0 10px 25px rgba(244, 143, 1, 0.35);
+  }
+
+  .reel-video-list {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    padding-inline: 6px;
+    padding-bottom: 8px;
+  }
+
+  .reel-video-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reel-video-card {
+    flex: 0 0 calc((100% - 72px) / 4);
+    max-width: calc((100% - 72px) / 4);
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  .reel-video-media {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .reel-video-media {
+      background: #374151;
+    }
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 749px) {
+    .reels-title {
+      font-size: 30px;
+    }
+  }
+  
+  .reel-video-card iframe,
+  .reel-video-card video {
+    width: 100%;
+    height: 100%;
+  }
+
+  .reel-product-overlay {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    padding: 12px 10px 18px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .reel-product-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 11px 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    pointer-events: auto;
+  }
+
+  .reel-product-image {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reel-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .reel-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .reel-product-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #111827;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .reel-product-pricing {
+    display: block;
+    align-items: center;
+    flex-wrap: wrap;
+    white-space: nowrap;
+  }
+
+  .reel-product-price {
+    font-weight: 700;
+    color: #111827;
+    font-size: 15px;
+  }
+
+  .reel-product-compare {
+    font-size: 13px;
+    color: #6b7280;
+    text-decoration: line-through;
+  }
+  
+  .reel-product-arrow {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin-left: 6px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  
+  @media (max-width: 1023px) {
+    .reels-header {
+      flex-direction: column;
+    }
+
+    .reels-nav-wrapper {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .reels-nav-wrapper:not(.reels-nav-wrapper--mobile) {
+      display: none;
+    }
+
+    .reels-nav-wrapper--mobile {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .reel-video-list {
+      gap: 12px;
+    }
+
+    .reel-video-card {
+      width: 100%;
+      max-width: none !important;
+      flex: 0 0 calc(50% - 12px);
+      min-width: 240px;
+    }
+    
+    .reel-product-overlay {
+      padding: 10px 12px 14px;
+    }
+
+    .reel-product-tag {
+      max-width: 100%;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+    }
+
+    .reel-product-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+    }
+
+    .reel-product-title {
+      font-size: 13px;
+    }
+
+    .reel-product-price {
+      font-size: 14px;
+    }
+
+    .reel-product-compare {
+      font-size: 12px;
+    }
+
+    .reel-product-arrow {
+      font-size: 18px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Reels Video Section",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "title_prefix",
+      "label": "Heading prefix",
+      "default": "Watch Our"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Heading highlight",
+      "default": "Stories"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop Our Reels"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "video_aspect_ratio",
+      "label": "Video Aspect Ratio",
+      "options": [
+        {
+          "value": "9/16",
+          "label": "Portrait (9:16) - Reels Style"
+        },
+        {
+          "value": "16/9",
+          "label": "Landscape (16:9)"
+        },
+        {
+          "value": "1/1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4/3",
+          "label": "Standard (4:3)"
+        }
+      ],
+      "default": "9/16"
+    },
+    {
+      "type": "range",
+      "id": "video_max_width",
+      "label": "Video Max Width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 600,
+      "info": "Maximum width for each video"
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Left Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Right Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_reel",
+      "name": "Video Reel",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Video Settings"
+        },
+        {
+          "type": "select",
+          "id": "video_source",
+          "label": "Video Source",
+          "options": [
+            {
+              "value": "uploaded",
+              "label": "Uploaded Video"
+            },
+            {
+              "value": "url",
+              "label": "External URL (YouTube/Vimeo)"
+            }
+          ],
+          "default": "uploaded"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Upload a video file"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "info": "Enter a YouTube or Vimeo URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "text",
+          "id": "video_alt",
+          "label": "Video Alt Text",
+          "info": "Description for accessibility"
+        },
+        {
+          "type": "checkbox",
+          "id": "video_autoplay",
+          "label": "Autoplay Video",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "video_loop",
+          "label": "Loop Video",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Video Information"
+        },
+        {
+          "type": "text",
+          "id": "video_title",
+          "label": "Video Title"
+        },
+        {
+          "type": "textarea",
+          "id": "video_description",
+          "label": "Video Description"
+        },
+        {
+          "type": "header",
+          "content": "Product"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reels Video Section",
+      "blocks": [
+        {
+          "type": "video_reel"
+        },
+        {
+          "type": "video_reel"
+        },
+        {
+          "type": "video_reel"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,740 @@
+{% liquid
+  assign category_blocks = section.blocks | where: 'type', 'category_card'
+  assign max_items = category_blocks.size
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  id="shop-by-category-{{ section.id }}"
+  class="
+    section
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    shop-by-category
+    spacing-style
+    gap-style
+  "
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+    --shop-by-category-heading-size: {{ section.settings.heading_size | default: 34 }}px;
+    {% if section.settings.accent_color != blank %}
+      --shop-by-category-accent: {{ section.settings.accent_color }};
+    {% endif %}
+  "
+>
+  <div class="shop-by-category__inner">
+    <div class="shop-by-category__header">
+      {% liquid
+        assign heading_first = section.settings.heading_prefix
+        assign heading_middle = section.settings.heading_highlight
+        assign heading_last = section.settings.heading_suffix
+      %}
+
+      {% if heading_first != blank or heading_middle != blank or heading_last != blank %}
+        <h2 class="shop-by-category__title">
+          {% if heading_first != blank %}
+            {{ heading_first }}
+          {% endif %}
+          {% if heading_middle != blank %}
+            <span class="shop-by-category__title-highlight">{{ heading_middle }}</span>
+          {% endif %}
+          {% if heading_last != blank %}
+            {{ heading_last }}
+          {% endif %}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="shop-by-category__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+
+      <div class="shop-by-category__nav shop-by-category__nav--desktop">
+        <button
+          class="shop-by-category__nav-btn shop-by-category__nav-btn--ghost"
+          type="button"
+          aria-label="Previous categories"
+          data-shop-by-category-prev
+        >
+          <span aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <button
+          class="shop-by-category__nav-btn shop-by-category__nav-btn--primary"
+          type="button"
+          aria-label="Next categories"
+          data-shop-by-category-next
+        >
+          <span aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    {% if max_items > 0 %}
+      <div class="shop-by-category__carousel">
+        <div class="shop-by-category__track" data-shop-by-category-track>
+          {% for block in category_blocks %}
+            {% liquid
+              assign collection = block.settings.collection
+              assign image = block.settings.image
+
+              if image == blank and collection
+                assign image = collection.image
+                if image == blank and collection.products_count > 0
+                  assign image = collection.products.first.featured_image
+                endif
+              endif
+            %}
+
+            <article class="shop-by-category__card" {{ block.shopify_attributes }}>
+              {% if image != blank %}
+                <div class="shop-by-category__card-media">
+                  {{ image | image_url: width: 1600 | image_tag: class: 'shop-by-category__card-image', loading: 'lazy' }}
+                </div>
+              {% else %}
+                <div class="shop-by-category__card-media shop-by-category__card-media--placeholder">
+                  {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endif %}
+
+              <a
+                class="shop-by-category__card-link"
+                {% if collection %}
+                  href="{{ collection.url }}"
+                {% endif %}
+                aria-label="{{ block.settings.title | default: collection.title | escape }}"
+              ></a>
+
+              <div class="shop-by-category__card-overlay">
+                <div class="shop-by-category__card-text">
+                  {% if block.settings.title != blank or collection %}
+                    <div class="shop-by-category__card-title">
+                      {{ block.settings.title | default: collection.title }}
+                    </div>
+                  {% endif %}
+
+                  <div class="shop-by-category__card-meta">
+                    {% if block.settings.description != blank %}
+                      <div class="shop-by-category__card-description rte">
+                        {{ block.settings.description }}
+                      </div>
+                    {% endif %}
+
+                    <span class="shop-by-category__card-arrow" aria-hidden="true">
+                      <svg class="shop-by-category__card-arrow-icon" viewBox="0 0 24 24" role="presentation">
+                        <path
+                          d="M9 16L16 9M11 9H16V14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="shop-by-category__nav shop-by-category__nav--mobile">
+      <button
+        class="shop-by-category__nav-btn shop-by-category__nav-btn--ghost"
+        type="button"
+        aria-label="Previous categories"
+        data-shop-by-category-prev
+      >
+        <span aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+
+      <button
+        class="shop-by-category__nav-btn shop-by-category__nav-btn--primary"
+        type="button"
+        aria-label="Next categories"
+        data-shop-by-category-next
+      >
+        <span aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var root = document.getElementById('shop-by-category-{{ section.id }}');
+    if (!root) return;
+
+    var track = root.querySelector('[data-shop-by-category-track]');
+    if (!track) return;
+
+    var prevs = root.querySelectorAll('[data-shop-by-category-prev]');
+    var nexts = root.querySelectorAll('[data-shop-by-category-next]');
+    
+    if (prevs.length === 0 || nexts.length === 0) return;
+
+    var slideSize = 0;
+
+    function getSlideSize() {
+      var first = track.firstElementChild;
+      if (!first) {
+        return track.clientWidth || 0;
+      }
+
+      var rect = first.getBoundingClientRect();
+      return rect.width + 16;
+    }
+
+    function scroll(direction) {
+      if (!slideSize) {
+        slideSize = getSlideSize();
+      }
+
+      if (!slideSize) return;
+
+      track.scrollBy({
+        left: direction * slideSize,
+        behavior: 'smooth'
+      });
+      
+      // Update active states
+      if (direction === -1) {
+         prevs.forEach(p => p.classList.add('shop-by-category__nav-btn--active'));
+         nexts.forEach(n => n.classList.remove('shop-by-category__nav-btn--active'));
+      } else {
+         nexts.forEach(n => n.classList.add('shop-by-category__nav-btn--active'));
+         prevs.forEach(p => p.classList.remove('shop-by-category__nav-btn--active'));
+      }
+    }
+
+    prevs.forEach(function(prev) {
+      prev.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        scroll(-1);
+      });
+    });
+
+    nexts.forEach(function(next) {
+      next.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        scroll(1);
+      });
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  .shop-by-category {
+    --shop-by-category-gap: 24px;
+    --shop-by-category-accent: var(--color-accent, var(--color-foreground-accent, currentColor));
+    padding-bottom: 0 !important;
+  }
+
+  .shop-by-category__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--shop-by-category-gap);
+    align-items: stretch;
+  }
+
+  @media screen and (min-width: 750px) {
+    .shop-by-category__inner {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .shop-by-category__header {
+      flex: 0 0 32%;
+      max-width: 360px;
+    }
+
+    .shop-by-category__carousel {
+      flex: 1 1 auto;
+    }
+
+    .shop-by-category__card {
+      flex: 0 0 320px;
+      max-width: 420px;
+    }
+  }
+
+  .shop-by-category__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .shop-by-category__title {
+    font-family: var(--font-heading--family, inherit);
+    font-size: var(--shop-by-category-heading-size, clamp(1.6rem, 2.2vw, 2.4rem));
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .shop-by-category__title-highlight {
+    color: var(--shop-by-category-accent, var(--color-accent, var(--color-foreground-accent, currentColor)));
+  }
+
+  .shop-by-category__subheading {
+    margin: 0;
+    max-width: 28rem;
+    color: color-mix(in srgb, var(--color-foreground) 72%, transparent);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .shop-by-category__nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .shop-by-category__nav--mobile {
+    display: flex;
+    justify-content:flex-start;
+    width: 100%;
+    margin-top: 0px;
+  }
+  
+  .shop-by-category__nav--desktop {
+    display: none;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .shop-by-category__nav--mobile {
+      display: none;
+    }
+    .shop-by-category__nav--desktop {
+      display: inline-flex;
+    }
+  }
+
+  .shop-by-category__nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
+    background: transparent;
+    color: var(--color-foreground);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .shop-by-category__nav-btn svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .shop-by-category__nav-btn--primary {
+    background: transparent;
+    border-color: color-mix(in srgb, var(--color-foreground) 16%, transparent);
+    color: var(--color-foreground);
+  }
+
+  .shop-by-category__nav-btn--ghost {
+    background: transparent;
+  }
+
+  .shop-by-category__nav-btn--active,
+  .shop-by-category__nav-btn:active {
+    background: var(--shop-by-category-accent);
+    border-color: transparent;
+    color: #ffffff;
+  }
+
+  .shop-by-category__nav-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .shop-by-category__nav-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+  }
+
+  .shop-by-category__card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    color: var(--color-foreground-on-media, #ffffff);
+    min-height: 220px;
+    isolation: isolate;
+    flex: 0 0 80%;
+    max-width: 420px;
+    scroll-snap-align: start;
+  }
+
+  .shop-by-category__card-media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .shop-by-category__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .shop-by-category__card-media--placeholder {
+    background: color-mix(in srgb, var(--color-background) 90%, var(--color-foreground) 10%);
+  }
+
+  .shop-by-category__card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+
+  .shop-by-category__card-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.25), transparent 55%);
+    z-index: 2;
+  }
+
+  .shop-by-category__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .shop-by-category__card-meta {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+  }
+
+  .shop-by-category__card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .shop-by-category__card-description {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .shop-by-category__carousel {
+    overflow: hidden;
+  }
+
+  .shop-by-category__track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+
+  .shop-by-category__track::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .shop-by-category__card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  @media screen and (min-width: 750px) {
+    .shop-by-category__card-title {
+      font-size: 30px;
+    }
+   
+  }
+
+
+  .shop-by-category__card-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .shop-by-category__card-arrow-icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .shop-by-category__nav-btn {
+      width: 35px;
+      height: 35px;
+    }
+     .shop-by-category__card-media {
+    
+    aspect-ratio: 3 / 4;
+  }
+
+    .shop-by-category__title {
+      font-size: 30px;
+    }
+
+    .shop-by-category__card {
+      border-radius: 18px;
+      flex: 0 0 calc(50% - 0.5rem);
+      max-width: calc(50% - 0.5rem);
+    }
+
+    .shop-by-category__card-overlay {
+      padding-inline: 1rem;
+      padding-block: 0.9rem 1.1rem;
+    }
+
+    .shop-by-category__card-title {
+      font-size: 0.95rem;
+    }
+  }
+  @media (max-width: 767px) {
+  .shop-by-category__header {
+    gap: 0px;
+  }
+  .shop-by-category__title {
+    margin-bottom: 2px;
+  }
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shop by category",
+  "class": "shop-by-category-section",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "category_card",
+      "name": "Category card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_prefix",
+      "label": "Heading (first part)",
+      "default": "Shop"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading highlight",
+      "default": "by"
+    },
+    {
+      "type": "text",
+      "id": "heading_suffix",
+      "label": "Heading (last part)",
+      "default": "Category"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explore our curated collections designed for your furry friend's happiness."
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#F48F01"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Section gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "icons_style",
+      "label": "Slider icon style",
+      "options": [
+        {
+          "value": "arrow",
+          "label": "Arrows"
+        },
+        {
+          "value": "chevron",
+          "label": "Chevrons"
+        },
+        {
+          "value": "arrows_large",
+          "label": "Large arrows"
+        },
+        {
+          "value": "chevron_large",
+          "label": "Large chevrons"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "arrow"
+    },
+    {
+      "type": "select",
+      "id": "icons_shape",
+      "label": "Slider icon background",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by category",
+      "category": "Collections"
+    }
+  ]
+}
+{% endschema %}
