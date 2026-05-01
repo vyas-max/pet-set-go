@@ -735,6 +735,20 @@
     },
     "our_stories_3mKx8P": {
       "type": "our-stories",
+      "blocks": {
+        "story_ircbnX": {
+          "type": "story",
+          "disabled": true,
+          "settings": {
+            "story_image": "shopify://shop_images/5_c1297c93-5603-409d-bb5c-ef60ace75ba2.png",
+            "story_title": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "story_ircbnX"
+      ],
       "disabled": true,
       "name": "Our Stories",
       "settings": {
