@@ -87,7 +87,7 @@
         "section_height": "full-screen",
         "section_height_custom": 50,
         "section_height_mobile": "custom",
-        "section_height_custom_mobile": 90,
+        "section_height_custom_mobile": 79,
         "color_scheme": "scheme-6",
         "toggle_overlay": true,
         "overlay_color": "#12121266",
@@ -560,14 +560,15 @@
         "testimonial_aWdA7z": {
           "type": "testimonial",
           "settings": {
-            "customer_image": "shopify://shop_images/7_5cbc74cb-96fe-4ca4-af04-71cf696a9e65.png",
             "customer_name": "Tom Walker",
             "customer_badge": "Verified buyer",
             "headline": "Amazing bed our pets are obsessed!",
             "text": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>",
             "product": "always-bhooka",
+            "product_button_text": "PRO LEASH",
             "show_rating": true,
-            "rating": 5
+            "rating": 5,
+            "customer_image": "shopify://shop_images/7_5cbc74cb-96fe-4ca4-af04-71cf696a9e65.png"
           }
         },
         "testimonial_8eKPTm": {
@@ -578,6 +579,7 @@
             "headline": "Amazing bed our pets are obsessed!",
             "text": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>",
             "product": "3d-bone-push-dog-toy",
+            "product_button_text": "PRO LEASH",
             "show_rating": true,
             "rating": 5
           }
@@ -590,6 +592,7 @@
             "headline": "Amazing bed our pets are obsessed!",
             "text": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>",
             "product": "all-hearts",
+            "product_button_text": "PRO LEASH",
             "show_rating": true,
             "rating": 5
           }
