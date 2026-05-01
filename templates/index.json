@@ -722,7 +722,7 @@
         "title_prefix": "Watch Our",
         "title_highlight": "Stories",
         "title": "",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor",
+        "description": "",
         "video_aspect_ratio": "9/16",
         "video_max_width": 600,
         "section_width": "page-width",
@@ -783,6 +783,7 @@
     },
     "our_story_mission_4qYWxq": {
       "type": "our-story-mission",
+      "disabled": true,
       "name": "Our Story Mission",
       "settings": {
         "section_width": "page-width",
@@ -951,6 +952,7 @@
     },
     "latest_blog_highlights_kmF9n6": {
       "type": "latest-blog-highlights",
+      "disabled": true,
       "name": "Latest blog highlights",
       "settings": {
         "eyebrow": "",
