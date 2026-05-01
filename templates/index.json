@@ -735,12 +735,13 @@
     },
     "our_stories_3mKx8P": {
       "type": "our-stories",
+      "disabled": true,
       "name": "Our Stories",
       "settings": {
-        "heading": "Our Stories",
-        "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor",
         "section_width": "page-width",
         "color_scheme": "",
+        "heading": "Our Stories",
+        "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -1009,6 +1010,13 @@
         "phone": "+1 (555) 123-4567",
         "email": "support@petsetgo.com",
         "show_social": true,
+        "social_facebook": "",
+        "social_instagram": "",
+        "social_twitter": "",
+        "social_youtube": "",
+        "social_linkedin": "",
+        "social_tiktok": "",
+        "social_pinterest": "",
         "color_scheme": "scheme-5",
         "custom_bg_color": "#000000",
         "custom_text_color": "#fffbf2",
