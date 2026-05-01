@@ -733,6 +733,18 @@
         "padding-inline-end": 0
       }
     },
+    "our_stories_3mKx8P": {
+      "type": "our-stories",
+      "name": "Our Stories",
+      "settings": {
+        "heading": "Our Stories",
+        "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "collection_showcase_TfaUUN": {
       "type": "collection-showcase",
       "blocks": {
@@ -1016,6 +1028,7 @@
     "tabbed_product_list_g4BqQM",
     "testimonials_with_product_rnQfT4",
     "video_section_RrEmwC",
+    "our_stories_3mKx8P",
     "collection_showcase_TfaUUN",
     "our_story_mission_4qYWxq",
     "featured_blog_posts_ztE7WK",
