@@ -1,1 +1,1007 @@
-{"sections":{"hero_jVaWmY":{"type":"hero","blocks":{"text_YLPk4p":{"type":"text","name":"t:names.heading","settings":{"text":"<p>Discover our<br\/>amazing Collection<\/p>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"custom","font":"var(--font-heading--family)","font_size":"5.5rem","line_height":"tight","letter_spacing":"tight","case":"none","wrap":"pretty","color":"var(--color-foreground-heading)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"button_H9gpTf":{"type":"button","name":"t:names.button","settings":{"label":"Shop all","link":"shopify:\/\/collections\/all","open_in_new_tab":false,"style_class":"button","width":"custom","custom_width":20,"width_mobile":"custom","custom_width_mobile":50},"blocks":{}}},"block_order":["text_YLPk4p","button_H9gpTf"],"custom_css":[".button {border-radius: 9999px !important;}","@media screen and (max-width: 749px) {.hero {padding: 10px; } .section-content-wrapper.section-content-wrapper {height: 105%; } .custom-font-size, .custom-font-size > * {font-size: 30px; } .size-style {width: 140px; height: 40px; }}"],"name":"t:names.hero","settings":{"media_type_1":"image","image_1":"shopify:\/\/shop_images\/image_2_2.png","video_1":"shopify:\/\/files\/videos\/2c6dc9ad-8b87-4948-a6e9-d63de64c9448.MP4","media_type_2":"image","stack_media_on_mobile":false,"custom_mobile_media":true,"media_type_1_mobile":"image","image_1_mobile":"shopify:\/\/shop_images\/image_2_1.png","media_type_2_mobile":"image","link":"","open_in_new_tab":false,"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"space-between","vertical_alignment":"flex-end","align_baseline":true,"horizontal_alignment_flex_direction_column":"center","vertical_alignment_flex_direction_column":"flex-end","gap":24,"section_width":"page-width","section_height":"full-screen","section_height_custom":50,"section_height_mobile":"custom","section_height_custom_mobile":90,"color_scheme":"scheme-6","toggle_overlay":true,"overlay_color":"#12121266","overlay_style":"solid","gradient_direction":"to bottom","blurred_reflection":false,"reflection_opacity":75,"padding-block-start":100,"padding-block-end":72}},"shop_by_category_hgDABm":{"type":"shop-by-category","blocks":{"category_card_n3NAWC":{"type":"category_card","settings":{"collection":"dog-beds","title":"","description":""}},"category_card_DBGgiM":{"type":"category_card","settings":{"collection":"shirts","title":"","description":""}},"category_card_3fxqWB":{"type":"category_card","settings":{"collection":"clothing","title":"","description":""}},"category_card_3GyVew":{"type":"category_card","settings":{"collection":"bedding","title":"","description":""}}},"block_order":["category_card_n3NAWC","category_card_DBGgiM","category_card_3fxqWB","category_card_3GyVew"],"name":"Shop by category","settings":{"heading_prefix":"Shop","heading_highlight":"by","heading_suffix":"Category","heading_size":60,"subheading":"Explore our curated collections designed for your furry friend's happiness.","accent_color":"#F48F01","section_width":"page-width","color_scheme":"scheme-1","gap":24,"icons_style":"arrow","icons_shape":"circle","padding-block-start":48,"padding-block-end":48}},"product_list_fa6P9H":{"type":"product-list","blocks":{"static-header":{"type":"_product-list-content","name":"t:names.header","static":true,"settings":{"content_direction":"row","vertical_on_mobile":false,"horizontal_alignment":"space-between","vertical_alignment":"flex-end","align_baseline":true,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"inherit_color_scheme":true,"color_scheme":"","background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"product_list_text_YFtzcL":{"type":"_product-list-text","name":"t:names.collection_title","settings":{"text":"<h3>{{ closest.collection.title }}<\/h3>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"h4","font":"var(--font-body--family)","font_size":"","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_list_button_MWeP9V":{"type":"_product-list-button","name":"t:names.product_list_button","settings":{"label":"View all","open_in_new_tab":false,"style_class":"link","width":"fit-content","custom_width":100,"width_mobile":"fit-content","custom_width_mobile":100},"blocks":{}}},"block_order":["product_list_text_YFtzcL","product_list_button_MWeP9V"]},"static-product-card":{"type":"_product-card","name":"t:names.product_card","static":true,"settings":{"product_card_gap":4,"inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"product_card_gallery_677WP3":{"type":"_product-card-gallery","name":"t:names.product_card_media","settings":{"image_ratio":"adapt","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_title_YXxMTj":{"type":"product-title","name":"t:names.product_title","settings":{"width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":4,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"price_JQzVV4":{"type":"price","name":"t:names.product_price","settings":{"show_sale_price_first":true,"show_installments":false,"show_tax_info":false,"type_preset":"h6","width":"100%","alignment":"left","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","color":"var(--color-foreground)","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["product_card_gallery_677WP3","product_title_YXxMTj","price_JQzVV4"]}},"disabled":true,"name":"Featured collection","settings":{"collection":"all","layout_type":"grid","carousel_on_mobile":false,"max_products":8,"columns":4,"mobile_columns":"2","mobile_card_size":"60cqw","columns_gap":8,"rows_gap":24,"icons_style":"arrow","icons_shape":"none","section_width":"page-width","horizontal_alignment":"flex-start","gap":28,"color_scheme":"scheme-1","padding-block-start":48,"padding-block-end":48}},"image_banner_BXA8nx":{"type":"image-banner","blocks":{"heading_gVtn8h":{"type":"heading","settings":{"heading":"Premium Food"}},"text_Vgwq97":{"type":"text","settings":{"text":"Nutrition they deserve"}},"button_EeEUjG":{"type":"button","settings":{"button_label":"Explore","button_link":"shopify:\/\/collections\/all"}}},"block_order":["heading_gVtn8h","text_Vgwq97","button_EeEUjG"],"name":"Image banner","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_uwjexiuwjexiuwje.png","mobile_image":"shopify:\/\/shop_images\/Gemini_Generated_Image_uwjexiuwjexiuwje.png","image_height":"medium","desktop_content_position":"middle-center","mobile_content_alignment":"center","color_scheme":"","padding-block-start":48,"padding-block-end":48}},"tabbed_product_list_g4BqQM":{"type":"tabbed-product-list","blocks":{"static-product-card":{"type":"_product-card","name":"t:names.product_card","static":true,"settings":{"product_card_gap":16,"inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":20,"padding-block-start":20,"padding-block-end":20,"padding-inline-start":0,"padding-inline-end":20},"blocks":{"tabbed_product_card_gallery":{"type":"_product-card-gallery","name":"t:names.product_card_media","settings":{"image_ratio":"adapt","border":"none","border_width":1,"border_opacity":100,"border_radius":20,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"tabbed_product_title":{"type":"product-title","name":"t:names.product_title","settings":{"width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":4,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"tabbed_product_price":{"type":"price","name":"t:names.product_price","settings":{"show_sale_price_first":true,"show_installments":false,"show_tax_info":false,"type_preset":"h6","width":"100%","alignment":"left","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","color":"var(--color-foreground)","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"buy_buttons_ANwKz6":{"type":"buy-buttons","name":"t:names.product_buy_buttons","settings":{"stacking":false,"show_pickup_availability":true,"gift_card_form":true,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"quantity":{"type":"quantity","disabled":true,"static":true,"settings":{},"blocks":{}},"add-to-cart":{"type":"add-to-cart","static":true,"settings":{"style_class":"button"},"blocks":{}},"accelerated-checkout":{"type":"accelerated-checkout","static":true,"settings":{},"blocks":{}}},"block_order":[]}},"block_order":["tabbed_product_card_gallery","tabbed_product_title","tabbed_product_price","buy_buttons_ANwKz6"]}},"custom_css":[".text-block {margin-left: 5%;}",".product-grid__card.product-grid__card {background-color: #fffaf0; padding-left: 20px;}"],"name":"Tabbed products","settings":{"heading":"Featured Collections","highlight_first_word":true,"subheading":"Discover our curated product selections for gour furry friends","collections":["accessories","pet-bandanas","bedding","clothing","t-shirts","dog-clothes","kurtas","polo-knits"],"max_products":12,"disable_quick_add":true,"layout_type":"grid","carousel_on_mobile":true,"section_width":"page-width","gap":28,"color_scheme":"","padding-block-start":48,"padding-block-end":0}},"testimonials_with_product_rnQfT4":{"type":"testimonials-with-product","blocks":{"testimonial_aWdA7z":{"type":"testimonial","settings":{"customer_image":"shopify:\/\/shop_images\/7_5cbc74cb-96fe-4ca4-af04-71cf696a9e65.png","customer_name":"Tom Walker","customer_badge":"Verified buyer","headline":"Amazing bed our pets are obsessed!","text":"<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.<\/p>","product":"always-bhooka","show_rating":true,"rating":5}},"testimonial_8eKPTm":{"type":"testimonial","settings":{"customer_name":"Tom Walker","customer_badge":"Verified buyer","headline":"Amazing bed our pets are obsessed!","text":"<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.<\/p>","product":"3d-bone-push-dog-toy","show_rating":true,"rating":5}},"testimonial_TkLTnz":{"type":"testimonial","settings":{"customer_name":"Tom Walker","customer_badge":"Verified buyer","headline":"Amazing bed our pets are obsessed!","text":"<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.<\/p>","product":"all-hearts","show_rating":true,"rating":5}}},"block_order":["testimonial_aWdA7z","testimonial_8eKPTm","testimonial_TkLTnz"],"name":"Testimonials with product","settings":{"section_width":"page-width","color_scheme":"","heading_prefix":"What Our","heading_highlight":"Customers","heading_suffix":"Say","heading":"What Our Customers Say","highlight_first_word":false,"subheading":"Real reviews from real pet parents","product_label":"Product reviewed","view_product_text":"View Product","padding-block-start":48,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0}},"video_section_RrEmwC":{"type":"video-section","blocks":{"video_reel_4My8qF":{"type":"video_reel","settings":{"video_source":"uploaded","video":"shopify:\/\/files\/videos\/WhatsApp Video 2024-11-11 at 19.14.37.mp4","video_url":"","video_alt":"","video_autoplay":true,"video_loop":true,"video_title":"","video_description":"","product":"2-in-1-melamine-dog-bowl-hearts"}},"video_reel_hj4zyM":{"type":"video_reel","settings":{"video_source":"uploaded","video":"shopify:\/\/files\/videos\/Website(1000x1200px).mp4","video_url":"","video_alt":"","video_autoplay":true,"video_loop":true,"video_title":"","video_description":"","product":"awara-hoon"}},"video_reel_8fDHne":{"type":"video_reel","settings":{"video_source":"uploaded","video":"shopify:\/\/files\/videos\/My mom said I take too many naps - wrong. There’s no such thing has too many naps. I think she n (1).mp4","video_url":"","video_alt":"","video_autoplay":true,"video_loop":true,"video_title":"","video_description":"","product":"awara-hoon"}},"video_reel_9zy3Yi":{"type":"video_reel","settings":{"video_source":"uploaded","video":"shopify:\/\/files\/videos\/Website(1000x1200px)(1).mp4","video_url":"","video_alt":"","video_autoplay":true,"video_loop":true,"video_title":"","video_description":"","product":"anokhi-printed-dog-shirt"}},"video_reel_LND7Xa":{"type":"video_reel","settings":{"video_source":"uploaded","video":"shopify:\/\/files\/videos\/blue mat.mp4","video_url":"","video_alt":"","video_autoplay":true,"video_loop":true,"video_title":"","video_description":"","product":"blue-bliss-pet-mat"}}},"block_order":["video_reel_4My8qF","video_reel_hj4zyM","video_reel_8fDHne","video_reel_9zy3Yi","video_reel_LND7Xa"],"name":"Reels Video Section","settings":{"title_prefix":"Watch Our","title_highlight":"Stories","title":"","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor","video_aspect_ratio":"9\/16","video_max_width":600,"section_width":"page-width","color_scheme":"scheme-2","padding-block-start":64,"padding-block-end":64,"padding-inline-start":0,"padding-inline-end":0}},"collection_showcase_TfaUUN":{"type":"collection-showcase","blocks":{"collection_yfBhbc":{"type":"collection","settings":{"collection":"kurtas","custom_image":"shopify:\/\/shop_images\/unnamed_3.png","custom_title":"Winter Collection","custom_description":"Keep your pets warm and stylish with our winter essentials."}},"collection_qh87Uw":{"type":"collection","settings":{"collection":"polo-knits","custom_image":"shopify:\/\/shop_images\/unnamed_4.png","custom_title":"Special Collection","custom_description":"Unique items for your beloved companions."}}},"block_order":["collection_yfBhbc","collection_qh87Uw"],"name":"Collection Showcase","settings":{"heading":"","section_width":"page-width","gap":24,"color_scheme":"","padding-block-start":36,"padding-block-end":36}},"our_story_mission_4qYWxq":{"type":"our-story-mission","name":"Our Story Mission","settings":{"section_width":"page-width","color_scheme":"","label":"Our Story","heading":"Our Mission","description":"Making the best pet products accessible to every pet parent.","sub_description":"Because every wag, purr, and chirp deserves the very best.","highlight_first_word":true,"show_label_icon":true,"button_text":"Shop All","button_link":"shopify:\/\/collections\/all","show_paw_icon":true,"image":"shopify:\/\/shop_images\/our_mission.png","show_social_proof":true,"social_proof_label":"Happy Buyers","happy_buyers_text":"15,000+ Happy Buyers","padding-block-start":40,"padding-block-end":40}},"featured_blog_posts_ztE7WK":{"type":"featured-blog-posts","blocks":{"static-blog-title":{"type":"_featured-blog-posts-title","name":"t:names.title","static":true,"settings":{"text":"<h3>{{ closest.blog.title }}<\/h3>","width":"fit-content","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"static-blog-post-card":{"type":"_featured-blog-posts-card","name":"t:names.blog_card","static":true,"settings":{"alignment":"left","gap":8,"inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"image":{"type":"_featured-blog-posts-image","static":true,"settings":{"image_ratio":"square","border":"none","border_width":1,"border_opacity":100,"border_radius":0},"blocks":{}},"title":{"type":"_heading","name":"t:names.title","static":true,"settings":{"type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","text":"<h4>{{ closest.article.title }}<\/h4>","read_only":false,"alignment":"left","show_alignment":false,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"blog-post-info-text":{"type":"_blog-post-info-text","name":"t:names.details","disabled":true,"static":true,"settings":{"show_date":true,"show_author":true,"type_preset":"","alignment":"left","show_alignment":false,"padding-block-start":0,"padding-block-end":0},"blocks":{}},"blog-post-description":{"type":"_blog-post-description","name":"t:names.excerpt","disabled":true,"static":true,"settings":{"type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","padding-block-start":8,"padding-block-end":0},"blocks":{}}},"block_order":[]}},"disabled":true,"name":"t:names.blog_posts_carousel","settings":{"blog":"news","layout_type":"carousel","carousel_on_mobile":true,"post_limit":5,"columns":3,"mobile_columns":"2","mobile_card_size":"60cqw","columns_gap":8,"rows_gap":16,"icons_style":"arrow","icons_shape":"circle","section_width":"page-width","gap":12,"color_scheme":"","padding-block-start":48,"padding-block-end":48}},"latest_blog_highlights_kmF9n6":{"type":"latest-blog-highlights","name":"Latest blog highlights","settings":{"eyebrow":"","heading_prefix":"Latest From","heading_highlight":"Our Blog","heading_suffix":"","subheading":"Paws-tive insights, tips, and stories from our team","blog":"news","article_limit":6,"excerpt_words":20,"card_cta_label":"Read More","show_view_all":true,"button_label":"View All Posts","highlight_color":"#F48F01","section_width":"page-width","color_scheme":"","padding-block-start":0,"padding-block-end":64}},"custom_footer_DWmpgh":{"type":"custom-footer","blocks":{"menu_maG6ye":{"type":"menu","settings":{"heading":"Shop","menu":"main-menu"}},"menu_fWEFyK":{"type":"menu","settings":{"heading":"Help","menu":"footer"}}},"block_order":["menu_maG6ye","menu_fWEFyK"],"disabled":true,"name":"Custom Footer","settings":{"brand_logo":"shopify:\/\/shop_images\/petsetgo_new_logo.png","brand_title":"","brand_description":"","newsletter_title":"Sign up for our newsletter","newsletter_description":"Be the first to know about our new collections, exclusive offers and promotions.","email_placeholder":"Enter your email address","button_text":"Subscribe","contact_text":"Our customer service team is here to help","phone":"+1 (555) 123-4567","email":"support@petsetgo.com","show_social":true,"color_scheme":"scheme-5","custom_bg_color":"#000000","custom_text_color":"#fffbf2","custom_link_color":"#6b7280","custom_heading_color":"#f5f5f5","custom_border_color":"#e5e7eb","show_payment":false,"payment_text":"We accept:","copyright_text":"All rights reserved.","show_policy_links":true}}},"order":["hero_jVaWmY","shop_by_category_hgDABm","product_list_fa6P9H","image_banner_BXA8nx","tabbed_product_list_g4BqQM","testimonials_with_product_rnQfT4","video_section_RrEmwC","collection_showcase_TfaUUN","our_story_mission_4qYWxq","featured_blog_posts_ztE7WK","latest_blog_highlights_kmF9n6","custom_footer_DWmpgh"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_jVaWmY": {
+      "type": "hero",
+      "blocks": {
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Discover our<br/>amazing Collection</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "5.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop all",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "custom",
+            "custom_width": 20,
+            "width_mobile": "custom",
+            "custom_width_mobile": 50
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YLPk4p",
+        "button_H9gpTf"
+      ],
+      "custom_css": [
+        ".button {border-radius: 9999px !important;}",
+        "@media screen and (max-width: 749px) {.hero {padding: 10px; } .section-content-wrapper.section-content-wrapper {height: 105%; } .custom-font-size, .custom-font-size > * {font-size: 30px; } .size-style {width: 140px; height: 40px; }}"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/image_2_2.png",
+        "video_1": "shopify://files/videos/2c6dc9ad-8b87-4948-a6e9-d63de64c9448.MP4",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/image_2_1.png",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 24,
+        "section_width": "page-width",
+        "section_height": "full-screen",
+        "section_height_custom": 50,
+        "section_height_mobile": "custom",
+        "section_height_custom_mobile": 90,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "gradient_direction": "to bottom",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 100,
+        "padding-block-end": 72
+      }
+    },
+    "shop_by_category_hgDABm": {
+      "type": "shop-by-category",
+      "blocks": {
+        "category_card_n3NAWC": {
+          "type": "category_card",
+          "settings": {
+            "collection": "dog-beds",
+            "title": "",
+            "description": ""
+          }
+        },
+        "category_card_DBGgiM": {
+          "type": "category_card",
+          "settings": {
+            "collection": "shirts",
+            "title": "",
+            "description": ""
+          }
+        },
+        "category_card_3fxqWB": {
+          "type": "category_card",
+          "settings": {
+            "collection": "clothing",
+            "title": "",
+            "description": ""
+          }
+        },
+        "category_card_3GyVew": {
+          "type": "category_card",
+          "settings": {
+            "collection": "bedding",
+            "title": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_card_n3NAWC",
+        "category_card_DBGgiM",
+        "category_card_3fxqWB",
+        "category_card_3GyVew"
+      ],
+      "name": "Shop by category",
+      "settings": {
+        "heading_prefix": "Shop",
+        "heading_highlight": "by",
+        "heading_suffix": "Category",
+        "heading_size": 60,
+        "subheading": "Explore our curated collections designed for your furry friend's happiness.",
+        "accent_color": "#f48f01",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "image_banner_BXA8nx": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_gVtn8h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Premium Food"
+          }
+        },
+        "text_Vgwq97": {
+          "type": "text",
+          "settings": {
+            "text": "Nutrition they deserve"
+          }
+        },
+        "button_EeEUjG": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gVtn8h",
+        "text_Vgwq97",
+        "button_EeEUjG"
+      ],
+      "name": "Image banner",
+      "settings": {
+        "image": "shopify://shop_images/Gemini_Generated_Image_uwjexiuwjexiuwje.png",
+        "mobile_image": "shopify://shop_images/Gemini_Generated_Image_uwjexiuwjexiuwje.png",
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "mobile_content_alignment": "center",
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "tabbed_product_list_g4BqQM": {
+      "type": "tabbed-product-list",
+      "blocks": {
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 16,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 20,
+            "padding-block-start": 20,
+            "padding-block-end": 20,
+            "padding-inline-start": 0,
+            "padding-inline-end": 20
+          },
+          "blocks": {
+            "tabbed_product_card_gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 20,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "tabbed_product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "tabbed_product_price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_ANwKz6": {
+              "type": "buy-buttons",
+              "name": "t:names.product_buy_buttons",
+              "settings": {
+                "stacking": false,
+                "show_pickup_availability": true,
+                "gift_card_form": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": [
+            "tabbed_product_card_gallery",
+            "tabbed_product_title",
+            "tabbed_product_price",
+            "buy_buttons_ANwKz6"
+          ]
+        }
+      },
+      "custom_css": [
+        ".text-block {margin-left: 5%;}",
+        ".product-grid__card.product-grid__card {background-color: #fffaf0; padding-left: 20px;}"
+      ],
+      "name": "Tabbed products",
+      "settings": {
+        "heading": "Featured Collections",
+        "highlight_first_word": true,
+        "subheading": "Discover our curated product selections for gour furry friends",
+        "collections": [
+          "accessories",
+          "pet-bandanas",
+          "bedding",
+          "clothing",
+          "t-shirts",
+          "dog-clothes",
+          "kurtas",
+          "polo-knits"
+        ],
+        "max_products": 12,
+        "disable_quick_add": true,
+        "layout_type": "grid",
+        "carousel_on_mobile": true,
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 0
+      }
+    },
+    "testimonials_with_product_rnQfT4": {
+      "type": "testimonials-with-product",
+      "blocks": {
+        "testimonial_aWdA7z": {
+          "type": "testimonial",
+          "settings": {
+            "customer_image": "shopify://shop_images/7_5cbc74cb-96fe-4ca4-af04-71cf696a9e65.png",
+            "customer_name": "Tom Walker",
+            "customer_badge": "Verified buyer",
+            "headline": "Amazing bed our pets are obsessed!",
+            "text": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>",
+            "product": "always-bhooka",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "testimonial_8eKPTm": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Tom Walker",
+            "customer_badge": "Verified buyer",
+            "headline": "Amazing bed our pets are obsessed!",
+            "text": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>",
+            "product": "3d-bone-push-dog-toy",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "testimonial_TkLTnz": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Tom Walker",
+            "customer_badge": "Verified buyer",
+            "headline": "Amazing bed our pets are obsessed!",
+            "text": "<p>We got the large size, and it comfortably fits both our pets. The bed is incredibly soft, fluffy, and clearly made with a lot of care and thought.</p>",
+            "product": "all-hearts",
+            "show_rating": true,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_aWdA7z",
+        "testimonial_8eKPTm",
+        "testimonial_TkLTnz"
+      ],
+      "name": "Testimonials with product",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "heading_prefix": "What Our",
+        "heading_highlight": "Customers",
+        "heading_suffix": "Say",
+        "heading": "What Our Customers Say",
+        "highlight_first_word": false,
+        "subheading": "Real reviews from real pet parents",
+        "product_label": "Product reviewed",
+        "view_product_text": "View Product",
+        "padding-block-start": 48,
+        "padding-block-end": 0,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "video_section_RrEmwC": {
+      "type": "video-section",
+      "blocks": {
+        "video_reel_4My8qF": {
+          "type": "video_reel",
+          "settings": {
+            "video_source": "uploaded",
+            "video": "shopify://files/videos/WhatsApp Video 2024-11-11 at 19.14.37.mp4",
+            "video_url": "",
+            "video_alt": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_title": "",
+            "video_description": "",
+            "product": "2-in-1-melamine-dog-bowl-hearts"
+          }
+        },
+        "video_reel_hj4zyM": {
+          "type": "video_reel",
+          "settings": {
+            "video_source": "uploaded",
+            "video": "shopify://files/videos/Website(1000x1200px).mp4",
+            "video_url": "",
+            "video_alt": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_title": "",
+            "video_description": "",
+            "product": "awara-hoon"
+          }
+        },
+        "video_reel_8fDHne": {
+          "type": "video_reel",
+          "settings": {
+            "video_source": "uploaded",
+            "video": "shopify://files/videos/My mom said I take too many naps - wrong. There’s no such thing has too many naps. I think she n (1).mp4",
+            "video_url": "",
+            "video_alt": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_title": "",
+            "video_description": "",
+            "product": "awara-hoon"
+          }
+        },
+        "video_reel_9zy3Yi": {
+          "type": "video_reel",
+          "settings": {
+            "video_source": "uploaded",
+            "video": "shopify://files/videos/Website(1000x1200px)(1).mp4",
+            "video_url": "",
+            "video_alt": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_title": "",
+            "video_description": "",
+            "product": "anokhi-printed-dog-shirt"
+          }
+        },
+        "video_reel_LND7Xa": {
+          "type": "video_reel",
+          "settings": {
+            "video_source": "uploaded",
+            "video": "shopify://files/videos/blue mat.mp4",
+            "video_url": "",
+            "video_alt": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_title": "",
+            "video_description": "",
+            "product": "blue-bliss-pet-mat"
+          }
+        }
+      },
+      "block_order": [
+        "video_reel_4My8qF",
+        "video_reel_hj4zyM",
+        "video_reel_8fDHne",
+        "video_reel_9zy3Yi",
+        "video_reel_LND7Xa"
+      ],
+      "name": "Reels Video Section",
+      "settings": {
+        "title_prefix": "Watch Our",
+        "title_highlight": "Stories",
+        "title": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor",
+        "video_aspect_ratio": "9/16",
+        "video_max_width": 600,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "collection_showcase_TfaUUN": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_yfBhbc": {
+          "type": "collection",
+          "settings": {
+            "collection": "kurtas",
+            "custom_image": "shopify://shop_images/unnamed_3.png",
+            "custom_title": "Winter Collection",
+            "custom_description": "Keep your pets warm and stylish with our winter essentials."
+          }
+        },
+        "collection_qh87Uw": {
+          "type": "collection",
+          "settings": {
+            "collection": "polo-knits",
+            "custom_image": "shopify://shop_images/unnamed_4.png",
+            "custom_title": "Special Collection",
+            "custom_description": "Unique items for your beloved companions."
+          }
+        }
+      },
+      "block_order": [
+        "collection_yfBhbc",
+        "collection_qh87Uw"
+      ],
+      "name": "Collection Showcase",
+      "settings": {
+        "heading": "",
+        "section_width": "page-width",
+        "gap": 24,
+        "color_scheme": "",
+        "padding-block-start": 36,
+        "padding-block-end": 36
+      }
+    },
+    "our_story_mission_4qYWxq": {
+      "type": "our-story-mission",
+      "name": "Our Story Mission",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "label": "Our Story",
+        "heading": "Our Mission",
+        "description": "Making the best pet products accessible to every pet parent.",
+        "sub_description": "Because every wag, purr, and chirp deserves the very best.",
+        "highlight_first_word": true,
+        "show_label_icon": true,
+        "button_text": "Shop All",
+        "button_link": "shopify://collections/all",
+        "show_paw_icon": true,
+        "image": "shopify://shop_images/our_mission.png",
+        "show_social_proof": true,
+        "social_proof_label": "Happy Buyers",
+        "happy_buyers_text": "15,000+ Happy Buyers",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "featured_blog_posts_ztE7WK": {
+      "type": "featured-blog-posts",
+      "blocks": {
+        "static-blog-title": {
+          "type": "_featured-blog-posts-title",
+          "name": "t:names.title",
+          "static": true,
+          "settings": {
+            "text": "<h3>{{ closest.blog.title }}</h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-blog-post-card": {
+          "type": "_featured-blog-posts-card",
+          "name": "t:names.blog_card",
+          "static": true,
+          "settings": {
+            "alignment": "left",
+            "gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "image": {
+              "type": "_featured-blog-posts-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0
+              },
+              "blocks": {}
+            },
+            "title": {
+              "type": "_heading",
+              "name": "t:names.title",
+              "static": true,
+              "settings": {
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "text": "<h4>{{ closest.article.title }}</h4>",
+                "read_only": false,
+                "alignment": "left",
+                "show_alignment": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "blog-post-info-text": {
+              "type": "_blog-post-info-text",
+              "name": "t:names.details",
+              "disabled": true,
+              "static": true,
+              "settings": {
+                "show_date": true,
+                "show_author": true,
+                "type_preset": "",
+                "alignment": "left",
+                "show_alignment": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "blog-post-description": {
+              "type": "_blog-post-description",
+              "name": "t:names.excerpt",
+              "disabled": true,
+              "static": true,
+              "settings": {
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 8,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "disabled": true,
+      "name": "t:names.blog_posts_carousel",
+      "settings": {
+        "blog": "news",
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "post_limit": 5,
+        "columns": 3,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 16,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 12,
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "latest_blog_highlights_kmF9n6": {
+      "type": "latest-blog-highlights",
+      "name": "Latest blog highlights",
+      "settings": {
+        "eyebrow": "",
+        "heading_prefix": "Latest From",
+        "heading_highlight": "Our Blog",
+        "heading_suffix": "",
+        "subheading": "Paws-tive insights, tips, and stories from our team",
+        "blog": "news",
+        "article_limit": 6,
+        "excerpt_words": 20,
+        "card_cta_label": "Read More",
+        "show_view_all": true,
+        "button_label": "View All Posts",
+        "highlight_color": "#f48f01",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 64
+      }
+    },
+    "custom_footer_DWmpgh": {
+      "type": "custom-footer",
+      "blocks": {
+        "menu_maG6ye": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "menu_fWEFyK": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "menu_maG6ye",
+        "menu_fWEFyK"
+      ],
+      "disabled": true,
+      "name": "Custom Footer",
+      "settings": {
+        "brand_logo": "shopify://shop_images/petsetgo_new_logo.png",
+        "brand_title": "",
+        "brand_description": "",
+        "newsletter_title": "Sign up for our newsletter",
+        "newsletter_description": "Be the first to know about our new collections, exclusive offers and promotions.",
+        "email_placeholder": "Enter your email address",
+        "button_text": "Subscribe",
+        "contact_text": "Our customer service team is here to help",
+        "phone": "+1 (555) 123-4567",
+        "email": "support@petsetgo.com",
+        "show_social": true,
+        "color_scheme": "scheme-5",
+        "custom_bg_color": "#000000",
+        "custom_text_color": "#fffbf2",
+        "custom_link_color": "#6b7280",
+        "custom_heading_color": "#f5f5f5",
+        "custom_border_color": "#e5e7eb",
+        "show_payment": false,
+        "payment_text": "We accept:",
+        "copyright_text": "All rights reserved.",
+        "show_policy_links": true
+      }
+    }
+  },
+  "order": [
+    "hero_jVaWmY",
+    "shop_by_category_hgDABm",
+    "product_list_fa6P9H",
+    "image_banner_BXA8nx",
+    "tabbed_product_list_g4BqQM",
+    "testimonials_with_product_rnQfT4",
+    "video_section_RrEmwC",
+    "collection_showcase_TfaUUN",
+    "our_story_mission_4qYWxq",
+    "featured_blog_posts_ztE7WK",
+    "latest_blog_highlights_kmF9n6",
+    "custom_footer_DWmpgh"
+  ]
+}
