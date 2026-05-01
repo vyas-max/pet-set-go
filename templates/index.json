@@ -456,6 +456,19 @@
               },
               "blocks": {}
             },
+            "review_QN7N7Q": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "shaded",
+                "show_number": false,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
             "tabbed_product_price": {
               "type": "price",
               "name": "t:names.product_price",
@@ -520,6 +533,7 @@
           "block_order": [
             "tabbed_product_card_gallery",
             "tabbed_product_title",
+            "review_QN7N7Q",
             "tabbed_product_price",
             "buy_buttons_ANwKz6"
           ]
