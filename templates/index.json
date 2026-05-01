@@ -771,6 +771,7 @@
     },
     "our_story_mission_4qYWxq": {
       "type": "our-story-mission",
+      "disabled": true,
       "name": "Our Story Mission",
       "settings": {
         "section_width": "page-width",
@@ -939,6 +940,7 @@
     },
     "latest_blog_highlights_kmF9n6": {
       "type": "latest-blog-highlights",
+      "disabled": true,
       "name": "Latest blog highlights",
       "settings": {
         "eyebrow": "",
