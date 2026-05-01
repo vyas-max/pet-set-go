@@ -141,13 +141,14 @@
         "category_card_3fxqWB",
         "category_card_3GyVew"
       ],
+      "custom_css": [],
       "name": "Shop by category",
       "settings": {
         "heading_prefix": "Shop",
         "heading_highlight": "by",
         "heading_suffix": "Category",
         "heading_size": 60,
-        "subheading": "Explore our curated collections designed for your furry friend's happiness.",
+        "subheading": "",
         "accent_color": "#f48f01",
         "section_width": "page-width",
         "color_scheme": "scheme-1",
