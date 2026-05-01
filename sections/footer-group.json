@@ -61,7 +61,7 @@
         "custom_text_color": "#fffbf2",
         "custom_link_color": "#6b7280",
         "custom_heading_color": "#f5f5f5",
-        "custom_border_color": "#e5e7eb",
+        "custom_border_color": "#1d3686",
         "show_payment": false,
         "payment_text": "We accept:",
         "copyright_text": "All rights reserved.",
